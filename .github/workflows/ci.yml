@@ -41,7 +41,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        uv run pytest tests/ -v --cov=safe_prompt --cov-report=xml
+        uv run pytest test/ -v --cov=safe_prompt --cov-report=xml
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
