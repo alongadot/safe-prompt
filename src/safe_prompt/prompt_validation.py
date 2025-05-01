@@ -1,5 +1,3 @@
-from typing import Type
-
 from pydantic import BaseModel
 
 from safe_prompt.interface_types import TemplateType
@@ -8,9 +6,7 @@ from safe_prompt.placeholder_extraction import (
 )
 
 
-def validate_template(
-    template: str, template_type: TemplateType, model_class: Type[BaseModel]
-) -> None:
+def validate_template(template: str, template_type: TemplateType, model_class: type[BaseModel]) -> None:
     """
     Validate that a template only references fields that exist in the model class.
 

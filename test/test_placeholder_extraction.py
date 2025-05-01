@@ -1,6 +1,6 @@
 from safe_prompt.placeholder_extraction import (
-    extract_placeholders_from_string,
     extract_placeholders_from_jinja2,
+    extract_placeholders_from_string,
 )
 
 
@@ -21,9 +21,7 @@ class TestExtractPlaceholders:
         assert placeholders == {"name"}
 
     def test_extract_placeholders_from_jinja2(self):
-        template = (
-            "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
-        )
+        template = "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
         placeholders = extract_placeholders_from_jinja2(template)
         assert placeholders == {"name", "age", "city"}
 

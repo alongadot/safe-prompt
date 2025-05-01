@@ -1,4 +1,4 @@
-from typing import TypeVar, Type, Generic
+from typing import Generic, TypeVar
 
 from jinja2 import Template
 from pydantic import BaseModel
@@ -25,7 +25,7 @@ class SafePrompt(Generic[ModelT]):
     def __init__(
         self,
         template: str,
-        model_class: Type[ModelT],
+        model_class: type[ModelT],
         template_type: TemplateType = TemplateType.STRING,
         runtime_validation: bool = True,
     ):

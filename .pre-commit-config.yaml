@@ -22,7 +22,9 @@ repos:
     hooks:
       - id: mypy
         name: mypy (via uv)
-        entry: uv run mypy --config-file pyproject.toml
+        entry: uv run mypy --config-file pyproject.toml src
+        pass_filenames: false
+        always_run: true
         language: python     # installs a clean venv for you
         additional_dependencies: []
         env:

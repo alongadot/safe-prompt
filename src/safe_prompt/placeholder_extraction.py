@@ -1,4 +1,5 @@
 import string
+
 from jinja2 import Environment, meta
 
 from safe_prompt.interface_types import TemplateType
@@ -15,9 +16,7 @@ def extract_placeholders_from_string(template: str) -> set[str]:
         A set of field names found in the template
     """
     formatter = string.Formatter()
-    return {
-        field_name for _, field_name, _, _ in formatter.parse(template) if field_name
-    }
+    return {field_name for _, field_name, _, _ in formatter.parse(template) if field_name}
 
 
 def extract_placeholders_from_jinja2(template: str) -> set[str]:

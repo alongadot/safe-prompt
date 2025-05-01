@@ -21,9 +21,7 @@ class TestSafePrompt:
         assert safe_prompt.template_type == TemplateType.STRING
 
     def test_init_with_valid_jinja2_template(self):
-        template = (
-            "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
-        )
+        template = "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
         safe_prompt = SafePrompt(template, UserModel, template_type=TemplateType.JINJA2)
         assert safe_prompt.template == template
         assert safe_prompt.model_class == UserModel
@@ -64,9 +62,7 @@ class TestSafePrompt:
         assert rendered == "Hello John, you are 30 years old and live in New York."
 
     def test_render_jinja2_template(self):
-        template = (
-            "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
-        )
+        template = "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
         safe_prompt = SafePrompt(template, UserModel, template_type=TemplateType.JINJA2)
         model_instance = UserModel(name="John", age=30, city="New York")
         rendered = safe_prompt.render(model_instance)

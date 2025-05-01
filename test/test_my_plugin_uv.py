@@ -1,11 +1,12 @@
 # tests/test_mypy_plugin_uv.py
 import subprocess
-import sys
 from pathlib import Path
 from textwrap import dedent
+
 import pytest
 
 PROJECT_ROOT = Path(__file__).parent.parent  # adjust if needed
+
 
 def run_mypy(target: Path) -> subprocess.CompletedProcess:
     """
@@ -18,7 +19,9 @@ def run_mypy(target: Path) -> subprocess.CompletedProcess:
         cwd=PROJECT_ROOT,
         capture_output=True,
         text=True,
+        check=False,
     )
+
 
 @pytest.fixture
 def write_test_file(tmp_path):
@@ -26,7 +29,9 @@ def write_test_file(tmp_path):
         p = tmp_path / name
         p.write_text(content)
         return p
+
     return _write
+
 
 def test_failing_template(write_test_file):
     code = dedent("""
@@ -45,9 +50,10 @@ def test_failing_template(write_test_file):
 
     # mypy exit code is non-zero on errors
     assert result.returncode != 0, result.stdout + result.stderr
-    # and our plugin’s message appears
+    # and our plugin's message appears
     assert "missing fields on 'User': ['email']" in result.stdout
     print(result.stdout)
+
 
 def test_passing_template(write_test_file):
     code = dedent("""

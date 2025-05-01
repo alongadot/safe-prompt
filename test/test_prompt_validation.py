@@ -18,9 +18,7 @@ class TestValidateTemplate:
         # No exception should be raised
 
     def test_validate_template_jinja2_valid(self):
-        template = (
-            "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
-        )
+        template = "Hello {{ name }}, you are {{ age }} years old and live in {{ city }}."
         validate_template(template, TemplateType.JINJA2, UserModel)
         # No exception should be raised
 

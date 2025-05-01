@@ -64,8 +64,13 @@ python_files = "test_*.py"
 
 [tool.ruff]
 target-version = "py39"
-line-length = 88
-select = ["E", "F", "I", "N", "W", "B", "UP", "PL", "RUF"]
+line-length = 120
+select = ["E", "F", "I", "N", "W", "B", "UP", "PL", "RUF", ]
+
+[tool.ruff.lint.pylint]
+# Raise the “too-many-return-statements” (PLR0911) threshold from 6 to 10
+max-returns = 10
+
 [project.optional-dependencies]
 dev = [
     "mypy>=1.15.0",
