@@ -28,7 +28,7 @@ jobs:
         
     - name: Sync dependencies
       run: |
-        uv sync --devs
+        uv sync --dev
         
     - name: Lint with ruff
       run: |
